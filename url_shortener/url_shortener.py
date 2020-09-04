@@ -5,6 +5,7 @@ from flask import redirect
 from base_api import BaseAPI
 from index import index_view
 from index import index_view_w_response
+from index import confirmation_view
 
 app = Flask('__main__')
 base = BaseAPI()
@@ -29,17 +30,29 @@ def forward_request(url_hash):
 @app.route('/shorten-url', methods=['POST'])
 def shorten_url():
 	raw_url = request.form.get('url_to_shorten')
-	url_to_shorten = base.chop_url(raw_url)
+	confirmed = request.form.get('confirmed')
 
+	url_to_shorten = base.chop_url(raw_url)
 	exists = base.check_for_existing_match(url_to_shorten)
 
 	if exists:
 		url_hash = base.get_hash_by_url(url_to_shorten)
 
 	else:
-		url_hash = base.get_random_string(
-			int(config['setup']['hash_length']))
-		base.write_url_to_db(url_hash, url_to_shorten)
+		connects = base.check_connectivity(raw_url)
+
+		if connects:
+			url_hash = base.get_random_string(
+				int(config['setup']['hash_length']))
+			base.write_url_to_db(url_hash, url_to_shorten)
+
+		elif not confirmed:
+				return confirmation_view.format(raw_url)
+
+		else:
+			url_hash = base.get_random_string(
+				int(config['setup']['hash_length']))
+			base.write_url_to_db(url_hash, url_to_shorten)
 
 	host_url = request.host_url
 	url = host_url+'i{}'.format(url_hash)

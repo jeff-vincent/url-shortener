@@ -1,6 +1,8 @@
 import string
 import random
+import requests
 from db import URLMapping
+
 
 class BaseAPI:
 
@@ -43,3 +45,14 @@ class BaseAPI:
 			'https://', '').replace(
 			'http://', '')
 		return chopped_url
+
+	def check_connectivity(self, url):
+		clean_url = self.chop_url(url)
+		url_prefix = 'http://{}'
+		full_url = url_prefix.format(clean_url)
+		try:
+			r = requests.get(full_url)
+			if r.status_code == '200':
+				return 1
+		except:
+			return 0
