@@ -20,7 +20,8 @@ def index():
 @app.route('/i<url_hash>', methods=['GET'])
 def forward_request(url_hash):
 	url = base.get_url_by_hash(url_hash)
-	full_url = 'https://{}'.format(url)
+	url_prefix = config['setup']['url_prefix']
+	full_url = url_prefix.format(url)
 
 	return redirect(full_url)
 
@@ -49,4 +50,4 @@ def shorten_url():
 
 
 if __name__ == '__main__':
-	app.run(debug=True)
+	app.run(host='0.0.0.0', debug=True, port=80)
