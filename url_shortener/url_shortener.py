@@ -39,7 +39,6 @@ def shorten_url():
 	else:
 		url_hash = base.get_random_string(
 			int(config['setup']['hash_length']))
-		print(url_hash)
 		base.write_url_to_db(url_hash, url_to_shorten)
 
 	host_url = request.host_url
@@ -50,4 +49,4 @@ def shorten_url():
 
 
 if __name__ == '__main__':
-	app.run(host='0.0.0.0', debug=True, port=80)
+	app.run(host='0.0.0.0', debug=True, port=8888)
