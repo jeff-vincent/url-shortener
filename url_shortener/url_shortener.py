@@ -47,7 +47,7 @@ def shorten_url():
 			base.write_url_to_db(url_hash, url_to_shorten)
 
 		elif not confirmed:
-				return confirmation_view.format(raw_url)
+			return confirmation_view.format(raw_url)
 
 		else:
 			url_hash = base.get_random_string(

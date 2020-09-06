@@ -37,7 +37,8 @@ class BaseAPI:
 
 	def get_random_string(self, length):
 	    letters = string.ascii_letters
-	    result_str = ''.join(random.choice(letters) for i in range(length))
+	    result_str = ''.join(
+	    	random.choice(letters) for i in range(length))
 	    return result_str
 
 	def chop_url(self, url):
@@ -52,7 +53,9 @@ class BaseAPI:
 		full_url = url_prefix.format(clean_url)
 		try:
 			r = requests.get(full_url)
-			if r.status_code == '200':
+			response_code_list = r.status_code.split()
+			if str(response_code_list[0]) != '4' \
+			and str(response_code_list[0] != '5'):
 				return 1
 		except:
 			return 0

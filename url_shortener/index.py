@@ -22,13 +22,15 @@ index_view_w_response = """
 confirmation_view = """
         <div style="background-color: #707bb2; margin: 15px; border-radius: 5px; padding: 15px; width: 800px">
         <form action="/shorten-url" method="post">
-            <p>We weren't able to connect to <b>{}</b>. Please confirm your URL by retyping it below.
+            <p>We weren't able to connect to <b style="color:blue">{}</b>. Please confirm your URL by retyping it below.
             <p><input type=text name=url_to_shorten placeholder=" your url...">
             <p><input type=hidden name=confirmed value=1>
             <p><input type=submit value="Confirm URL">
         </form>
         <form action="/" method="get">
-            <p><input type=submit value="Cancel">
+            <span style="color:red">
+            <p><input style="color: red" type=submit value="Cancel">
+            </span>
         </form>
         </div>
         """
