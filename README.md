@@ -14,13 +14,15 @@ A simple URL shortener written in Flask.
 
 ### 2. Start Postgres
 
-`docker run \
+```
+docker run \
 -e POSTGRES_USER=postgres \
 -e POSTGRES_DB=url_shortener \
 -e POSTGRES_PASSWORD=password \
 -p 5432:5432 \
 --name postgres-db \
-postgres`
+postgres
+```
 
 ### 3. Start app
 `python url_shortener.py`
