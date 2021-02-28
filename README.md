@@ -30,8 +30,6 @@ postgres
 #### 3. Create Pipenv & Install dependencies
 ```
 pipenv shell
-```
-```
 pip install -r requirements.txt
 ```
 
