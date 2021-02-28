@@ -2,10 +2,11 @@
 
 A simple URL shortener. 
 
+## Run it locally
+
 #### Requires 
 - Python3.9
 
-## Run it locally
 #### 1. Update file `/url_shortener/db.py` as follows:
 
 `db = PostgresqlDatabase('url_shortener', user='postgres', password='password',
