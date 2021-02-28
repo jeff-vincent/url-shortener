@@ -12,4 +12,4 @@ Install pipenv if you don't yet have it. `pip3 install pipenv`
 1. run: `cd url_shortener && python url_shortener.py`
 
 ## Deploy in Docker
-WIP :)
+`docker-compose -f url_shortener.yml up`
