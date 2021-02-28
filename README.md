@@ -23,8 +23,10 @@ docker run \
 --name postgres-db \
 postgres
 ```
+#### 3. Install dependencies
+`pip install -r requirements.txt`
 
-#### 3. Start app
+#### 4. Start app
 `python url_shortener.py`
 
 ## Deploy in Docker
