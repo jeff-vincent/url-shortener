@@ -3,7 +3,7 @@
 A simple URL shortener written in Flask. 
 
 ## Run it locally
-### 1. Update file `/url_shortener/db.py` as follows:
+#### 1. Update file `/url_shortener/db.py` as follows:
 
 `db = PostgresqlDatabase('url_shortener', user='postgres', password='password',
                            host='db', port=5432)`
@@ -12,7 +12,7 @@ A simple URL shortener written in Flask.
 `db = PostgresqlDatabase('url_shortener', user='postgres', password='password',
                            host='0.0.0.0', port=5432)`
 
-### 2. Start Postgres
+#### 2. Start Postgres
 
 ```
 docker run \
@@ -24,7 +24,7 @@ docker run \
 postgres
 ```
 
-### 3. Start app
+#### 3. Start app
 `python url_shortener.py`
 
 ## Deploy in Docker
