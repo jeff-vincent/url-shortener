@@ -1,6 +1,6 @@
 # url-shortener
 
-A simple URL shortener written in Flask. 
+A simple URL shortener. 
 
 ## Run it locally
 #### 1. Update file `/url_shortener/db.py` as follows:
