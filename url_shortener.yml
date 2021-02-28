@@ -1,11 +1,7 @@
 ---
 version: '3'
-services:
-  app:
-    build: .
-    ports:
-      - 8888:8888
 
+services:
   db:
     image: postgres
     ports:
@@ -14,3 +10,10 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_DB=url_shortener
       - POSTGRES_PASSWORD=password
+  app:
+    build: .
+    ports:
+      - 8888:8888
+    depends_on:
+      - db
+

@@ -1,4 +1,3 @@
-import configparser
 from flask import Flask
 from flask import request
 from flask import redirect
@@ -9,8 +8,6 @@ from index import confirmation_view
 
 app = Flask('__main__')
 base = BaseAPI()
-config = configparser.ConfigParser()
-config.read('url_shortener.cfg')
 
 @app.route('/', methods=['GET'])
 def index():
@@ -21,7 +18,7 @@ def index():
 @app.route('/i<url_hash>', methods=['GET'])
 def forward_request(url_hash):
 	url = base.get_url_by_hash(url_hash)
-	url_prefix = config['setup']['url_prefix']
+	url_prefix = 'https://{}'
 	full_url = url_prefix.format(url)
 
 	return redirect(full_url)
@@ -42,16 +39,14 @@ def shorten_url():
 		connects = base.check_connectivity(raw_url)
 
 		if connects:
-			url_hash = base.get_random_string(
-				int(config['setup']['hash_length']))
+			url_hash = base.get_random_string(5)
 			base.write_url_to_db(url_hash, url_to_shorten)
 
 		elif not confirmed:
 			return confirmation_view.format(raw_url)
 
 		else:
-			url_hash = base.get_random_string(
-				int(config['setup']['hash_length']))
+			url_hash = base.get_random_string(5)
 			base.write_url_to_db(url_hash, url_to_shorten)
 
 	host_url = request.host_url
