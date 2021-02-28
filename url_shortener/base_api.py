@@ -36,9 +36,9 @@ class BaseAPI:
 		return url
 
 	def get_random_string(self, length):
-	    letters = string.ascii_letters
+	    pool = string.ascii_letters + string.digits
 	    result_str = ''.join(
-	    	random.choice(letters) for i in range(length))
+	    	random.choice(pool) for i in range(length))
 	    return result_str
 
 	def chop_url(self, url):

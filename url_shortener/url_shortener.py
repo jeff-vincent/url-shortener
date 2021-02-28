@@ -39,14 +39,14 @@ def shorten_url():
 		connects = base.check_connectivity(raw_url)
 
 		if connects:
-			url_hash = base.get_random_string(5)
+			url_hash = base.get_random_string(3)
 			base.write_url_to_db(url_hash, url_to_shorten)
 
 		elif not confirmed:
 			return confirmation_view.format(raw_url)
 
 		else:
-			url_hash = base.get_random_string(5)
+			url_hash = base.get_random_string(3)
 			base.write_url_to_db(url_hash, url_to_shorten)
 
 	host_url = request.host_url
