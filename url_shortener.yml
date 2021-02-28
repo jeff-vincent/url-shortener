@@ -14,6 +14,8 @@ services:
     build: .
     ports:
       - 8888:8888
+    command: bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; python /app/url_shortener.py'
     depends_on:
       - db
+    
 
