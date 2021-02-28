@@ -2,6 +2,9 @@
 
 A simple URL shortener. 
 
+#### Requires 
+- Python3.9
+
 ## Run it locally
 #### 1. Update file `/url_shortener/db.py` as follows:
 
