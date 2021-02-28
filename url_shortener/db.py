@@ -1,6 +1,7 @@
 from peewee import *
 
-db = SqliteDatabase('urls.db')
+db = PostgresqlDatabase('url_shortener', user='postgres', password='password',
+                           host='db', port=5432)
 
 class URLMapping(Model):
     url_hash = CharField()
