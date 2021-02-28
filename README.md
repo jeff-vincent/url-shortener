@@ -27,8 +27,13 @@ docker run \
 --name postgres-db \
 postgres
 ```
-#### 3. Install dependencies
-`pip install -r requirements.txt`
+#### 3. Create Pipenv & Install dependencies
+```
+pipenv shell
+```
+```
+pip install -r requirements.txt
+```
 
 #### 4. Start app
 `python url_shortener.py`
