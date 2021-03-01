@@ -49,7 +49,7 @@ class BaseAPI:
 
 	def check_connectivity(self, url):
 		clean_url = self.chop_url(url)
-		url_prefix = 'http://{}'
+		url_prefix = 'https://{}'
 		full_url = url_prefix.format(clean_url)
 		try:
 			r = requests.get(full_url)

@@ -2,9 +2,9 @@ from flask import Flask
 from flask import request
 from flask import redirect
 from base_api import BaseAPI
-from index import index_view
-from index import index_view_w_response
-from index import confirmation_view
+from views import index_view
+from views import index_view_w_response
+from views import confirmation_view
 
 app = Flask('__main__')
 base = BaseAPI()
@@ -15,7 +15,7 @@ def index():
 	return index_view
 
 
-@app.route('/i<url_hash>', methods=['GET'])
+@app.route('/<url_hash>', methods=['GET'])
 def forward_request(url_hash):
 	url = base.get_url_by_hash(url_hash)
 	url_prefix = 'https://{}'
@@ -39,18 +39,18 @@ def shorten_url():
 		connects = base.check_connectivity(raw_url)
 
 		if connects:
-			url_hash = base.get_random_string(3)
+			url_hash = base.get_random_string(4)
 			base.write_url_to_db(url_hash, url_to_shorten)
 
 		elif not confirmed:
 			return confirmation_view.format(raw_url)
 
 		else:
-			url_hash = base.get_random_string(3)
+			url_hash = base.get_random_string(4)
 			base.write_url_to_db(url_hash, url_to_shorten)
 
 	host_url = request.host_url
-	url = host_url+'i{}'.format(url_hash)
+	url = f"{host_url}{url_hash}"
 	display_url = base.chop_url(url)
 
 	return index_view_w_response.format(url,display_url)
