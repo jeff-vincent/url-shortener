@@ -5,4 +5,4 @@ RUN pip install -r /temp/requirements.txt
 RUN rm -rf /temp
 RUN mkdir /app
 COPY ./url_shortener /app
-CMD python /app/url_shortener.py
+# ENTRYPOINT ["sh", "-c", "sleep 2073600"]

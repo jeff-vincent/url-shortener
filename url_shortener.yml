@@ -13,10 +13,11 @@ services:
     volumes:
       - db-data:/var/lib/postgresql/data
   app:
+    restart: always
     build: .
     ports:
       - 8888:8888
-    command: bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; python /app/url_shortener.py'
+    command: bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; gunicorn -w 1 -b 0.0.0.0:8888 --chdir /app wsgi:app'
     depends_on:
       - db
   nginx:
@@ -24,7 +25,7 @@ services:
     build: ./nginx/
     ports:
       - "80:80"
-    links:
+    depends_on:
       - app
 volumes:
   db-data:
