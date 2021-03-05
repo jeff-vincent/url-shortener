@@ -106,8 +106,5 @@ resource "aws_instance" "ubuntu-web-server" {
     user_data = <<-EOF
                 #!/bin/bash
                 sudo snap install docker
-                git clone https://github.com/jeff-vincent/url-shortener.git
-                cd url-shortener
-                sudo docker-compose -f url_shortener.yml up
                 EOF
     }
