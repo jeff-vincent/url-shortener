@@ -56,5 +56,5 @@ def shorten_url():
 	return index_view_w_response.format(url,display_url)
 
 
-# if __name__ == '__main__':
-# 	app.run(host='0.0.0.0', port=8888)
+if __name__ == '__main__':
+	app.run(host='0.0.0.0', port=8888)
