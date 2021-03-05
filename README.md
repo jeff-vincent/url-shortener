@@ -38,3 +38,24 @@ pip install -r requirements.txt
 
 ## Deploy in Docker
 `docker-compose -f url_shortener.yml up`
+
+## Deploy to EC2 in AWS
+Generate Access Keys in AWS Console
+```
+export TF_VAR_access_key=<your-access-key>
+export TF_VAR_secret_key=<Your-secret-key>
+```
+
+From the Terraform directory run the following:
+```
+terraform init
+terraform plan
+terraform apply
+```
+
+SSH into the EC2 instance that is created, and run the following:
+```
+git clone https://github.com/jeff-vincent/url-shortener.git
+cd url-shortener
+sudo docker-compose -f url_shortener.yml up
+```
