@@ -40,9 +40,11 @@ pip install -r requirements.txt
 `docker-compose -f url_shortener.yml up`
 
 ## Deploy to EC2 in AWS (HTTP)
-Generate an EC2 key pair called "main" and download the resulting .pem file.  
+**In AWS Console:**
 
-Generate Access Keys in AWS Console
+Generate an EC2 key pair called "main" and download the resulting .pem file
+
+Generate Access Keys
 ```
 export TF_VAR_access_key=<your-access-key>
 export TF_VAR_secret_key=<your-secret-key>
