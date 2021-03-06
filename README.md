@@ -64,3 +64,7 @@ git clone https://github.com/jeff-vincent/url-shortener.git
 cd url-shortener
 sudo docker-compose -f url_shortener.yml up
 ```
+To tear down the deployment, from within the Terraform directory run:
+```
+terraform destroy
+```
