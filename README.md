@@ -6,6 +6,7 @@ A simple URL shortener.
 
 #### Requires 
 - Python3.9
+- Docker
 
 #### 1. Update file `/url_shortener/db.py` as follows:
 
