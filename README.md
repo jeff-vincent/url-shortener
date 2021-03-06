@@ -40,10 +40,12 @@ pip install -r requirements.txt
 `docker-compose -f url_shortener.yml up`
 
 ## Deploy to EC2 in AWS
+Generate an EC2 key pair called "main" and download the resulting .pem file.  
+
 Generate Access Keys in AWS Console
 ```
 export TF_VAR_access_key=<your-access-key>
-export TF_VAR_secret_key=<Your-secret-key>
+export TF_VAR_secret_key=<your-secret-key>
 ```
 
 From the Terraform directory run the following:
