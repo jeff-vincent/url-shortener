@@ -45,11 +45,11 @@ pip install -r requirements.txt
 
 Generate an EC2 key pair called "main" and download the resulting .pem file
 
-click: EC2 > Key pairs > Create key pair
+> click: EC2 > Key pairs > Create key pair
 
 Generate Access Keys: 
 
-click: user icon (at top right) > My Security Credentials > Access keys > Create New Access Key
+> click: user icon (at top right) > My Security Credentials > Access keys > Create New Access Key
 
 Add them to `main.tf`
 
