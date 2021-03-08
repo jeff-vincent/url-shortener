@@ -45,11 +45,13 @@ pip install -r requirements.txt
 
 Generate an EC2 key pair called "main" and download the resulting .pem file
 
-Generate Access Keys
-```
-export TF_VAR_access_key=<your-access-key>
-export TF_VAR_secret_key=<your-secret-key>
-```
+click: EC2 > Key pairs > Create key pair
+
+Generate Access Keys: 
+
+click: user icon (at top right) > My Security Credentials > Access keys > Create New Access Key
+
+Add them to `main.tf`
 
 From the Terraform directory run the following:
 ```
